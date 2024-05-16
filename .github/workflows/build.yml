@@ -66,6 +66,9 @@ jobs:
       - name: "Make tgz, zip and sdk"
         run: bash .github/workflow_data/package.sh
 
+      - name: Build Flipper Application Package (.fap)
+        uses: flipperdevices/flipperzero-ufbt-action@v0.1.4
+    
       - name: Send devbuild webhook
         if: "github.event_name == 'push' && github.ref_name == 'dev' && !contains(github.event.head_commit.message, '--nobuild')"
         env:
